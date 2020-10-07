@@ -1,0 +1,40 @@
+#body-bg{background: fixed center center no-repeat url(../img/sample_bg.jpg) ; 
+ 
+    background-size: cover ; width: 100%; min-height: 500px;}
+li.portfolio-item{
+    min-height: 400px;
+    max-width: 452px;
+}
+.services p{
+    margin-bottom: 10%;
+}
+.services p h2{
+    margin-top: 3%;
+}
+
+@media screen and ( max-width: 768px){
+    .margin-vert-30 {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    .portfolio-group li{
+       
+        transform:translate(25%, 0%);}
+}
+@media screen and ( max-width: 576px){
+    
+    .portfolio-group li{
+       
+        transform:translate(0%, 0%);}
+}
+
+
+    @media screen and ( max-width: 320px){
+        .container {
+            padding: 20px;
+            margin: 0px;
+        }
+        .portfolio-group li{
+       
+            transform:translate(0%, 0%);}
+    }

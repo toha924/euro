@@ -132,3 +132,9 @@ $(function () {
   $(window).load(function(){
     $("#header").sticky({ topSpacing: 0 });
   });
+
+  textWidthAdapt=() => {
+   let responsiveImage = document.querySelector('.resp__image')
+  console.log(responsiveImage.style)}
+  
+textWidthAdapt()
