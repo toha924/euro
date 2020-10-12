@@ -1,140 +1,129 @@
-
-/* Portfolio */
-$(window).load(function() {
-    var $cont = $('.portfolio-group');
-
-
-    $cont.isotope({
-        itemSelector: '.portfolio-group .portfolio-item',
-        masonry: {columnWidth: $('.isotope-item:first').width(), gutterWidth: -20, isFitWidth: true},
-        filter: '*',
-    });
-
-    $('.portfolio-filter-container a').click(function() {
-        $cont.isotope({
-            filter: this.getAttribute('data-filter')
-        });
-
-        return false;
-    });
-
-    var lastClickFilter = null;
-    $('.portfolio-filter a').click(function() {
-
-        //first clicked we don't know which element is selected last time
-        if (lastClickFilter === null) {
-            $('.portfolio-filter a').removeClass('portfolio-selected');
-        }
-        else {
-            $(lastClickFilter).removeClass('portfolio-selected');
-        }
-
-        lastClickFilter = this;
-        $(this).addClass('portfolio-selected');
-    });
-
-});
-
-/* Image Hover  - Add hover class on hover */
-$(document).ready(function(){
-    if (Modernizr.touch) {
-        // show the close overlay button
-        $(".close-overlay").removeClass("hidden");
-        // handle the adding of hover class when clicked
-        $(".image-hover figure").click(function(e){
-            if (!$(this).hasClass("hover")) {
-                $(this).addClass("hover");
-            }
-        });
-        // handle the closing of the overlay
-        $(".close-overlay").click(function(e){
-            e.preventDefault();
-            e.stopPropagation();
-            if ($(this).closest(".image-hover figure").hasClass("hover")) {
-                $(this).closest(".image-hover figure").removeClass("hover");
-            }
-        });
-    } else {
-        // handle the mouseenter functionality
-        $(".image-hover figure").mouseenter(function(){
-            $(this).addClass("hover");
-        })
-        // handle the mouseleave functionality
-        .mouseleave(function(){
-            $(this).removeClass("hover");
-        });
+function iosAdapt() {
+    if (window.navigator.userAgent.search(/iPad|iPhone|iPod/) > 0) {
+        document.querySelector(".wrapper").style.backgroundAttachment = "local"
     }
-});
-
-// thumbs animations
-$(function () {
-    
+}
+$(window).load((function () {
+    var e = $(".portfolio-group");
+    e.isotope({
+        itemSelector: ".portfolio-group .portfolio-item",
+        masonry: {
+            columnWidth: $(".isotope-item:first").width(),
+            gutterWidth: -20,
+            isFitWidth: !0
+        },
+        filter: "*"
+    }), $(".portfolio-filter-container a").click((function () {
+        return e.isotope({
+            filter: this.getAttribute("data-filter")
+        }), !1
+    }));
+    var t = null;
+    $(".portfolio-filter a").click((function () {
+        null === t ? $(".portfolio-filter a").removeClass("portfolio-selected") : $(t).removeClass("portfolio-selected"), t = this, $(this).addClass("portfolio-selected")
+    }))
+})), $(document).ready((function () {
+    Modernizr.touch ? ($(".close-overlay").removeClass("hidden"), $(".image-hover figure").click((function (e) {
+        $(this).hasClass("hover") || $(this).addClass("hover")
+    })), $(".close-overlay").click((function (e) {
+        e.preventDefault(), e.stopPropagation(), $(this).closest(".image-hover figure").hasClass("hover") && $(this).closest(".image-hover figure").removeClass("hover")
+    }))) : $(".image-hover figure").mouseenter((function () {
+        $(this).addClass("hover")
+    })).mouseleave((function () {
+        $(this).removeClass("hover")
+    }))
+})), $((function () {
     $(".thumbs-gallery i").animate({
-             opacity: 0
-    
-          }, {
-             duration: 300,
-             queue: false
-          });
+        opacity: 0
+    }, {
+        duration: 300,
+        queue: !1
+    }), $(".thumbs-gallery").parent().hover((function () {}), (function () {
+        $(".thumbs-gallery i").animate({
+            opacity: 0
+        }, {
+            duration: 300,
+            queue: !1
+        })
+    })), $(".thumbs-gallery i").hover((function () {
+        $(this).animate({
+            opacity: 0
+        }, {
+            duration: 300,
+            queue: !1
+        }), $(".thumbs-gallery i").not($(this)).animate({
+            opacity: .4
+        }, {
+            duration: 300,
+            queue: !1
+        })
+    }), (function () {}))
+})), $((function () {
+    $("#hornavmenu").slicknav()
+})), $(window).load((function () {
+    $("#hornav").sticky({
+        topSpacing: 120
+    })
+})), $(window).load((function () {
+    $("#header").sticky({
+        topSpacing: 0
+    })
+})), cardHeightAdapt = () => {
+    let e = Array.from(document.querySelectorAll(".portfolio-group li figure figcaption")),
+        t = e.map(e => parseInt(window.getComputedStyle(e).height)),
+        o = Math.max(...t);
+    e.forEach(e => {
+        e.style.height = o + "px"
+    })
+}, window.addEventListener("load", cardHeightAdapt()), window.addEventListener("resize", cardHeightAdapt()), window.addEventListener("load", iosAdapt()), window.addEventListener("resize", iosAdapt());
+let data = {
+    service_id: "service_rdgv3y7",
+    template_id: "user_EjMoam6vByYiEyUFivMom",
+    user_id: "user_EjMoam6vByYiEyUFivMom",
+    template_params: {
+        username: "James",
+        "g-recaptcha-response": "03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd..."
+    }
+};
+const btn = document.getElementById("button");
+let onClick = document.getElementById("form").addEventListener("submit", (function (e) {
+    e.preventDefault(), btn.value = "Sending...";
+    emailjs.sendForm("default_service", "template_99gqwmi", this).then(() => {
+        btn.value = "Send Email", alert("Sent!")
+    }, e => {
+        btn.value = "Send Email", alert(JSON.stringify(e))
+    })
+}));
+const baton = document.getElementById("prorab_button");
+let prorab = document.getElementById("prorab").addEventListener("submit", (function (e) {
+    e.preventDefault();
+    let t = document.getElementById("phone").value;
+    if (!/^\+?\d{6,12}$/.test(t)) return alert("Phone is incorrect"), !1;
+    btn.value = "Отправка...";
+    emailjs.sendForm("default_service", "template_j67g79f", this).then(() => {
+        baton.value = "вызвать прораба", alert("Заявка отправлена")
+    }, e => {
+        baton.value = "вызвать прораба", alert(JSON.stringify(e))
+    })
+}));
 
-   $(".thumbs-gallery").parent().hover(
-       function () {},
-       function () {
-          $(".thumbs-gallery i").animate({
-             opacity: 0
-          }, {
-             duration: 300,
-             queue: false
-          });
-   });
- 
-   $(".thumbs-gallery i").hover(
-      function () {
-          $(this).animate({
-             opacity: 0
-    
-          }, {
-             duration: 300,
-             queue: false
-          });
+const btnCallback = document.getElementById('callback_button');
 
-          $(".thumbs-gallery i").not( $(this) ).animate({
-             opacity: 0.4         }, {
-             duration: 300,
-             queue: false
-          });
-      }, function () {
-      }
-   );
+let callBack = document.getElementById('call_back')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
 
-});
+   btnCallback.value = 'Отправка...';
 
-// Mobile Menu
-    $(function(){
-        $('#hornavmenu').slicknav();
+   const serviceID = 'default_service';
+   const templateID = 'template_j67g79f';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btnCallback.value = 'заказать обратный pвонок';
+      alert('Sent!');
+    }, (err) => {
+      btnCallback.value = 'заказать обратный звонок';
+      alert(JSON.stringify(err));
     });
-
-// Sticky Divs
-// $('#header').affix({
-//     offset: {
-//       top:42
-//     }
-//   });
-// $('#hornav').affix({
-//   offset: {
-//     top:42
-//   }
-// });
-
-  $(window).load(function(){
-    $("#hornav").sticky({ topSpacing: 120 });
-  });
-  $(window).load(function(){
-    $("#header").sticky({ topSpacing: 0 });
-  });
-
-  textWidthAdapt=() => {
-   let responsiveImage = document.querySelector('.resp__image')
-  console.log(responsiveImage.style)}
-  
-textWidthAdapt()
+});

@@ -1,40 +1,160 @@
-#body-bg{background: fixed center center no-repeat url(../img/sample_bg.jpg) ; 
+*{font-family: 'Roboto Condensed', sans-serif;}
+
+
+#body-bg{
+    background: fixed center center no-repeat url(../img/sample_bg1.jpg) ; 
+    background-size: cover ; width: 100%;
+}
+h2, h3 {color: black;}
+p#black {color: black;}
+.bg__header{
+    padding-top: 1%;
+    color: #d6e1d0;
+    text-align: center;
+    font-size: 6rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 2px #000;
+    }
+.flex__box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 140px;
+}   
+
+
+    .advantages{
+max-width: 340px;
+min-width: 340px;
+    }
+    .advantages__icon{
+        max-width: 80px;
+        margin-right: 20px;  
+        background-size:cover;      
+    }
+
+.euro__logo{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#logo__phone{
+    position: absolute;
+    right: 0%;
+    top:80%;
+    color: #ffffff;
+}
+.fa-phone{color: #ffffff;}
+
+
+.offers{display: flex;
+    justify-content: center;
+
+}
+
+.portfolio-g ul li figure {  
+    margin:0 auto;
+}
+
+.portfolio-group li figure figcaption{
+    max-width: 450px;
+}
+
+.chess__cards {
  
-    background-size: cover ; width: 100%; min-height: 500px;}
-li.portfolio-item{
-    min-height: 400px;
-    max-width: 452px;
+    margin-bottom: 100px;}
+
+    .chess__cards div{margin-bottom: 20px;}
+
+    .float__left{float: left;
+    margin-right: 20px;}
+
+    .float__right{float: right;
+        margin-left: 20px;}
+        .form__wrapper{
+           
+        }
+        .form{text-align: center;
+           transform: translate(0%, 50%);
+           background-color: black;
+           padding: 10px;
+           margin-bottom: 20px;
+           
+        }
+        .form input{
+            width: 240px;
+            height: 60px;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom:20px ;
+        }
+
+.services .services__header{
+   padding-top:2% ;
+   margin-top: 10px;
 }
-.services p{
-    margin-bottom: 10%;
+
+.text__shadow--White{
+    text-shadow: 1px 1px 1px#ffffff; 
+    background-color: rgba(248, 245, 245, 1);
+    margin-top: 50px;
 }
-.services p h2{
-    margin-top: 3%;
-}
+@supports (-webkit-text-stroke: 1px #FFF) { /* если есть поддержка свойства: невидимый текст посетителям не понравится */
+    .text__shadow--White{
+      color: #000; /* прозрачный цвет букв */
+      -webkit-text-stroke: 1px #FFF;
+      font-weight: 800;
+    }
+  }
 
 @media screen and ( max-width: 768px){
     .margin-vert-30 {
         margin-top: 0px;
         margin-bottom: 0px;
     }
-    .portfolio-group li{
-       
-        transform:translate(25%, 0%);}
+    .bg__header{
+        font-size: 4rem;
+        padding-top: 40%;
+    }
+    .chess__cards div h2 {
+        font-size:  19px;
+       }
+
+       .chess__cards div h3 {
+        font-size:  16px;
+       }
+       .chess__cards div img{
+           max-width: 50%;
+       }
 }
 @media screen and ( max-width: 576px){
     
+    .logo a{
+        top: 0px
+     }
     .portfolio-group li{
        
         transform:translate(0%, 0%);}
 }
-
-
-    @media screen and ( max-width: 320px){
+.chess__cards div img{
+    max-width: 50%;
+}
+    @media screen and ( max-width: 540px){
         .container {
             padding: 20px;
             margin: 0px;
         }
+        #logo__phone{
+            display:none;
+        }
         .portfolio-group li{
        
             transform:translate(0%, 0%);}
+            .chess__cards div img{
+                max-width: 100%;
+            }
     }
