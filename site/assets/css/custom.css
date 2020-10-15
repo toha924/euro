@@ -2,8 +2,14 @@
 
 
 #body-bg{
-    background: fixed center center no-repeat url(../img/sample_bg1.jpg) ; 
-    background-size: cover ; width: 100%;
+    background-attachment: fixed;
+    background-clip: border-box;
+    background-image: url("../img/sample_bg1.jpg");
+    background-origin: padding-box;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 h2, h3 {color: black;}
 p#black {color: black;}
@@ -24,11 +30,11 @@ p#black {color: black;}
     min-height: 140px;
 }   
 
-
     .advantages{
 max-width: 340px;
 min-width: 340px;
     }
+
     .advantages__icon{
         max-width: 80px;
         margin-right: 20px;  
@@ -116,6 +122,7 @@ min-width: 340px;
         margin-top: 0px;
         margin-bottom: 0px;
     }
+  
     .bg__header{
         font-size: 4rem;
         padding-top: 40%;

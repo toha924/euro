@@ -1,6 +1,6 @@
 function iosAdapt() {
     if (window.navigator.userAgent.search(/iPad|iPhone|iPod/) > 0) {
-        document.querySelector(".wrapper").style.backgroundAttachment = "local"
+        document.querySelector("#body-bg").style.backgroundAttachment = "local"
     }
 }
 $(window).load((function () {
@@ -58,7 +58,8 @@ $(window).load((function () {
             queue: !1
         })
     }), (function () {}))
-})), $((function () {
+})),
+ $((function () {
     $("#hornavmenu").slicknav()
 })), $(window).load((function () {
     $("#hornav").sticky({
@@ -75,7 +76,14 @@ $(window).load((function () {
     e.forEach(e => {
         e.style.height = o + "px"
     })
-}, window.addEventListener("load", cardHeightAdapt()), window.addEventListener("resize", cardHeightAdapt()), window.addEventListener("load", iosAdapt()), window.addEventListener("resize", iosAdapt());
+}
+window.addEventListener("load", cardHeightAdapt())
+window.addEventListener("resize", cardHeightAdapt())
+window.addEventListener("load", iosAdapt())
+window.addEventListener("resize", iosAdapt());
+
+
+
 let data = {
     service_id: "service_rdgv3y7",
     template_id: "user_EjMoam6vByYiEyUFivMom",
@@ -85,20 +93,43 @@ let data = {
         "g-recaptcha-response": "03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd..."
     }
 };
+
+
+const btnCallback = document.getElementById('callback_button');
+
+let callBack = document.getElementById('call_back').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    btnCallback.value = 'Отправка...';
+
+    const serviceID = 'default_service';
+    const templateID = 'template_j67g79f';
+
+    emailjs.sendForm(serviceID, templateID, this).then(() => {
+        btnCallback.value = 'заказать обратный звонок';
+        alert('Заявка отправлена');
+    }, (err) => {
+        btnCallback.value = 'заказать обратный звонок';
+        alert(JSON.stringify(err));
+    });
+});
+
 const btn = document.getElementById("button");
 let onClick = document.getElementById("form").addEventListener("submit", (function (e) {
     e.preventDefault(), btn.value = "Sending...";
     emailjs.sendForm("default_service", "template_99gqwmi", this).then(() => {
-        btn.value = "Send Email", alert("Sent!")
+        btn.value = "Send Email", alert("Сообщение отпралено")
     }, e => {
         btn.value = "Send Email", alert(JSON.stringify(e))
     })
 }));
+
+
 const baton = document.getElementById("prorab_button");
 let prorab = document.getElementById("prorab").addEventListener("submit", (function (e) {
     e.preventDefault();
-    let t = document.getElementById("phone").value;
-    if (!/^\+?\d{6,12}$/.test(t)) return alert("Phone is incorrect"), !1;
+    // let t = document.getElementById("phone").value;
+    // if (!/^\+?\d{6,12}$/.test(t)) return alert("Phone is incorrect"), !1;
     btn.value = "Отправка...";
     emailjs.sendForm("default_service", "template_j67g79f", this).then(() => {
         baton.value = "вызвать прораба", alert("Заявка отправлена")
@@ -106,24 +137,3 @@ let prorab = document.getElementById("prorab").addEventListener("submit", (funct
         baton.value = "вызвать прораба", alert(JSON.stringify(e))
     })
 }));
-
-const btnCallback = document.getElementById('callback_button');
-
-let callBack = document.getElementById('call_back')
- .addEventListener('submit', function(event) {
-   event.preventDefault();
-
-   btnCallback.value = 'Отправка...';
-
-   const serviceID = 'default_service';
-   const templateID = 'template_j67g79f';
-
-   emailjs.sendForm(serviceID, templateID, this)
-    .then(() => {
-      btnCallback.value = 'заказать обратный pвонок';
-      alert('Sent!');
-    }, (err) => {
-      btnCallback.value = 'заказать обратный звонок';
-      alert(JSON.stringify(err));
-    });
-});
